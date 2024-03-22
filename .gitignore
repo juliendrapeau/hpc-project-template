@@ -1,3 +1,13 @@
+# Project folders
+
+archives
+data
+figures
+
+# Project files
+.gitignore
+.pre-commit-config.yaml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
