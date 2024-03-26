@@ -1,0 +1,4 @@
+{
+    "array_param1": {"start": 1, "end": 11, "step": 2},
+    "array_param2": [1.5, 8.0]
+}

@@ -1,0 +1,13 @@
+{
+    "directory": "data/counting",
+
+    "epsilon": ["1", "1 / 3", "1 / 9"],
+    "ini_method": "tqa",
+    "qaoa_version": "grover-mixer",
+    "problem": "nae3sat",
+    "numtrial": 1,
+    "seed": "random",
+
+    "contract_mps": false,
+    "sampling_mps": false
+}

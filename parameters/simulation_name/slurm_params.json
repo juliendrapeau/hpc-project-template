@@ -1,0 +1,16 @@
+{
+    "directory": "data/simulation_name",
+
+    "partition": "c-aphex",
+    "account": "def-ko1",
+
+    "job_name": "counting",
+    "array": "1-20",
+    "time": "6:00:00",
+
+    "cpus_per_task": "1",
+    "mem_per_cpu": "5G",
+
+    "mail-user": "cip@usherbrooke.ca",
+    "mail_type": "ALL"
+}
