@@ -1,5 +1,5 @@
 {
-    "directory": "data/simulation_name",
+    "output_directory": "data/simulation_name",
 
     "param1": 0
 }

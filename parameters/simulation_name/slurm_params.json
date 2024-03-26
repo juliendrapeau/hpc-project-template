@@ -1,10 +1,10 @@
 {
-    "directory": "data/simulation_name",
+    "output_directory": "data/simulation_name",
 
     "partition": "c-aphex",
     "account": "def-ko1",
 
-    "job_name": "counting",
+    "job_name": "simulation_name",
     "array": "1-20",
     "time": "6:00:00",
 

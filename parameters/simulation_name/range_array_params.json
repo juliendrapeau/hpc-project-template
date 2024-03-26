@@ -1,4 +1,4 @@
 {
-    "array_param1": {"start": 1, "end": 11, "step": 2},
-    "array_param2": [1.5, 8.0]
+    "array_param1": {"start": 1, "end": 12, "step": 2},
+    "array_param2": [1.5, 5.7, 6.3, 7.1, 8.0]
 }

@@ -156,7 +156,9 @@ def generate_metadata_file(
         json.dump(metadata, file, indent=4)
 
 
-def generate_slurm_script(subdir_path, slurm_params, simul_path, array_path):
+def generate_slurm_script(
+    subdir_path, python_script_path, slurm_params, simul_path, array_path
+):
     """
     Generate a SLURM script for the job.
 
@@ -213,7 +215,7 @@ simul_dict=$(<{simul_path})
 merged=$(jq -n --argjson array_dict "$array_dict" --argjson simul_dict "$simul_dict" '$simul_dict + $array_dict')
 
 # Launch the Python script (-u for unbuffered output)
-python -u your_python_script.py "$merged"
+python -u {python_script_path} "$merged"
 
 echo 'My job is finished !'"""
         )
@@ -262,6 +264,12 @@ def add_array_parameters(range_array_params):
 if __name__ == "__main__":
 
     # Find the parameter path from the command line
+    if len(sys.argv) != 3:
+        raise ValueError(
+            "Usage: python tools/job_prepper.py parameter_path python_script_path"
+        )
+
+    python_script_path = os.path.join(sys.argv[2])
     parameter_path = sys.argv[1]
 
     # Find parameters path
@@ -278,14 +286,14 @@ if __name__ == "__main__":
     other_params = load_json(other_path)
 
     # Make sure the output directory is the same both parameters files
-    if slurm_params["directory"] != simul_params["directory"]:
+    if slurm_params["output_directory"] != simul_params["output_directory"]:
         raise ValueError("Output directories are different.")
 
     # Create array parameters
     dump_json(add_array_parameters(range_array_params), array_path)
 
     # Create directories
-    sub_dir_path = create_directory_structure(slurm_params["directory"])
+    sub_dir_path = create_directory_structure(slurm_params["output_directory"])
     print("Created the following directory: ", sub_dir_path)
 
     # Create paths for the job
@@ -294,7 +302,9 @@ if __name__ == "__main__":
     metadata_path = os.path.join(sub_dir_path, "metadata.json")
 
     # Generate SLURM script
-    generate_slurm_script(sub_dir_path, slurm_params, simul_path, array_path)
+    generate_slurm_script(
+        sub_dir_path, python_script_path, slurm_params, simul_path, array_path
+    )
 
     # Grant permissions to the SLURM script
     # os.chmod(primary_job_path, 0o700)

@@ -20,7 +20,7 @@ On the cluster, you need to change the parameters files according to your needs.
 Once this is done, you can prepare the job. To do this, use the following command:  
 
 ```
-python tools/job_prepper.py parameters/simulation_name/
+python tools/job_prepper.py parameters/simulation_name/ main.py
 ```
 
 This creates the output directory and subdirectories, including the job script and the metadata file. Finally, you can run the job script using:  
@@ -38,7 +38,7 @@ Here is the basic steps to launch a job with the "HPC". Let's suppose that you a
 2. Prepare the job.  
 
 ```
-python tools/job_prepper.py parameters/simulation_name/
+python tools/job_prepper.py parameters/simulation_name/ main.py
 ```
 
 3. Launch the job.  
